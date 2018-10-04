@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Request;
+use estoque\Produto;
 
 
 class ProdutoController extends Controller
@@ -9,7 +10,7 @@ class ProdutoController extends Controller
 
     public function lista()
     {
-        $produtos = DB::select('select * from produtos');
+        $produtos = Produto::all();
 
         return view('produto.listagem')->with('produtos', $produtos);
     }
@@ -17,13 +18,12 @@ class ProdutoController extends Controller
 
     public function mostra($id)
     {
-        $resposta = DB::select('select * from produtos where id = ?', [$id]);
-
-        if(empty($resposta)) {
+        $resposta = Produto::find($id);
+        if (empty($resposta)) {
             return "Esse produto não existe";
         }
 
-        return view('produto.detalhes')->with('p', $resposta[0]);
+        return view('produto.detalhes')->with('p', $resposta);
     }
 
     public function novo()
@@ -33,16 +33,10 @@ class ProdutoController extends Controller
 
     public function adicionar()
     {
-        $nome = Request::input('nome');
-        $descricao = Request::input('descricao');
-        $valor = Request::input('valor');
-        $quantidade = Request::input('quantidade');
+        
+        Produto::create(Request::all());
 
-        DB::insert('insert into produtos values (null, ?, ?, ?, ?)', 
-            array($nome, $valor, $descricao, $quantidade));
-
-        return view('produto.adicionado')->with('nome', $nome);
+        return redirect('/produtos')->withInput(Request::only('nome'));
     }
-
 
 }

@@ -26,6 +26,10 @@
   </table>
  @endif
 
+ @if (old('nome'))
+    <h4>Parabéns, o produto {{ old('nome') }} foi adiiconado com sucesso!</h4>
+ @endif
+
  <h4>
   <span class="label label-danger pull-right">
     Um ou menos itens no estoque
