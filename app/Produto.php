@@ -8,5 +8,5 @@ class Produto extends Model
 {
     public $timestamps = false;
 
-    public $fillable = array('nome', 'descricao', 'valor', 'quantidade');
+    public $fillable = array('nome', 'descricao', 'valor', 'quantidade', 'tamanho');
 }

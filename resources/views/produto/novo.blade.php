@@ -15,6 +15,10 @@
     <input class="form-control" name="descricao">
   </div>
   <div class="form-group">
+    <label>Tamanho</label>
+    <input class="form-control" name="tamanho">
+  </div>
+  <div class="form-group">
     <label>Valor</label>
     <input class="form-control" name="valor">
   </div>

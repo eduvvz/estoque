@@ -33,10 +33,16 @@ class ProdutoController extends Controller
 
     public function adicionar()
     {
-        
         Produto::create(Request::all());
 
         return redirect('/produtos')->withInput(Request::only('nome'));
+    }
+
+    public function deletar($id)
+    {
+        $produto = Produto::find($id);
+        $produto->delete();
+        return redirect('/produtos');
     }
 
 }

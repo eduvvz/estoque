@@ -16,9 +16,15 @@
       <td> {{$p->valor}} </td>
       <td> {{$p->descricao}} </td>
       <td> {{$p->quantidade}} </td>
+      <td> {{$p->tamanho}} </td>
       <td> 
         <a href="/produtos/mostra/{{$p->id}}">
-          Visu <span class="glyphicon glyphicon-search"></span>
+          Visu
+        </a>
+      </td>
+      <td> 
+        <a href="/produtos/delete/{{$p->id}}">
+          Del
         </a>
       </td>
     </tr>
